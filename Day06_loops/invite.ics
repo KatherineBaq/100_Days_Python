@@ -1,0 +1,38 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:icalendar-ruby
+CALSCALE:GREGORIAN
+BEGIN:VTIMEZONE
+TZID:Europe/Warsaw
+BEGIN:DAYLIGHT
+DTSTART:20220327T030000
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=3
+TZNAME:CEST
+END:DAYLIGHT
+BEGIN:STANDARD
+DTSTART:20211031T020000
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=10
+TZNAME:CET
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTAMP:20220118T184646Z
+UID:2f7b562f-6a7a-441e-a7d3-4142cf6b3701
+DTSTART;TZID=Europe/Warsaw:20220127T134500
+DTEND;TZID=Europe/Warsaw:20220127T140000
+DESCRIPTION:\n \nDear Katherine\,\n \nThank you again for your interest in 
+ working at InvestSuite.\n \nAs a first step\, I would like to invite you
+  for a 30 mins video call. That will be a chance to get to know each othe
+ r and mutual needs better.\n \nPlease choose a suitable time slot in the 
+ upcoming days. \n \nI am looking forward to meeting you.\n \nSincere rega
+ rds\,\n\nKasia\n \n\n\nVideo meeting: https://meet.google.com/nqe-ozes-hgj
+SUMMARY:Interview at InvestSuite
+BEGIN:VALARM
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
