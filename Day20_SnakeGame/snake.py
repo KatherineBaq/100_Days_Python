@@ -50,7 +50,7 @@ class Snake:
 
         def reset(self):
             for seg in self.segments:
-                set.goto(1000, 1000)
+                seg.goto(1000, 1000)
             self.segments.clear()
             self.create_snake()
             self.head = self.segments[0]
