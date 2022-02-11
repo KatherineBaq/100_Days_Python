@@ -1,4 +1,3 @@
-#TODO: Create a letter using starting_letter.txt 
 #for each name in invited_names.txt
 #Replace the [name] placeholder with the actual name.
 #Save the letters in the folder "ReadyToSend".
@@ -20,12 +19,5 @@ for name in names:
         contents = file_sl.read()
         name_clean = name.strip('\n')
         new_contents = contents.replace("[name]", name_clean)
-        print(new_contents)
         with open(f"{path_send_letters}letter_for_{name_clean}", mode="w") as file_send:
             file_send.write(new_contents)
-
-# with open("my_file.txt", mode="a") as file:
-#     file.write("\nNew Text")
-#
-# with open("my_new_file.txt", mode="w") as file:
-#     file.write("New file!!")
