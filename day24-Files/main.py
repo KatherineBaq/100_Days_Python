@@ -19,5 +19,5 @@ for name in names:
         contents = file_sl.read()
         name_clean = name.strip('\n')
         new_contents = contents.replace("[name]", name_clean)
-        with open(f"{path_send_letters}letter_for_{name_clean}", mode="w") as file_send:
+        with open(f"{path_send_letters}letter_for_{name_clean}.txt", mode="w") as file_send:
             file_send.write(new_contents)
