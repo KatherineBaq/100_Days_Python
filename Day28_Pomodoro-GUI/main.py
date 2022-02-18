@@ -84,7 +84,7 @@ label_check.grid(column=1, row=3)
 # Buttons
 button_start = Button(text="Start", command=start_timer, highlightthickness=0)
 button_start.grid(column=0, row=2)
-button_reset = Button(text="Reset", command="", highlightthickness=0)
+button_reset = Button(text="Reset", command=reset_timer, highlightthickness=0)
 button_reset.grid(column=2, row=2)
 # button.pack()
 
