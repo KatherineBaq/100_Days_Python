@@ -2,6 +2,7 @@ from tkinter import *  # Import all classes and constants
 from tkinter import messagebox  # Import a module
 import random
 import pyperclip
+import json
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -36,10 +37,28 @@ def save():
         is_ok = messagebox.askyesno(title=website, message=f"These are the details entered: \n"
                                                            f"Email: {email}\n Password: {password}")
         if is_ok:
-            with open("data.txt", "a") as file:
-                file.write(f"{website} | {email} | {password}\n")
-            input_website.delete(0, END)
-            input_password.delete(0, END)
+            new_data = {
+                website: {
+                    "email": email,
+                    "password": password,
+                }
+            }
+            try:
+                with open("data.json", "r") as file:
+                    # Reading old data
+                    data = json.load(file)
+            except FileNotFoundError:
+                with open("data.json", "w") as file:
+                    json.dump(new_data, file, indent=4)  # Indent is for writing in a nice format in the json file
+            else:
+                # Updating old data with new data
+                data.update(new_data)
+                with open("data.json", "w") as file:
+                    #Saving updated data
+                    json.dump(data, file, indent=4)  # Indent is for writing in a nice format in the json file
+            finally:
+                input_website.delete(0, END)
+                input_password.delete(0, END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
