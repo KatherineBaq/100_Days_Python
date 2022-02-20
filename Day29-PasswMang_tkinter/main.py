@@ -54,11 +54,29 @@ def save():
                 # Updating old data with new data
                 data.update(new_data)
                 with open("data.json", "w") as file:
-                    #Saving updated data
+                    # Saving updated data
                     json.dump(data, file, indent=4)  # Indent is for writing in a nice format in the json file
             finally:
                 input_website.delete(0, END)
                 input_password.delete(0, END)
+
+
+# ---------------------------- FIND PASSWORD ------------------------------- #
+def find_password():
+    website = input_website.get()
+    try:
+        with open("data.json", "r") as file:
+        # Reading old data
+            data = json.load(file)
+    except FileNotFoundError:
+        messagebox.showwarning(title="Warning!", message="No data File Found!")
+    else:
+        if website in data:
+            messagebox.showinfo(title=website, message=f"Email is: {data[website]['email']},\n Password is: "
+                                                       f"{data[website]['password']}")
+            pyperclip.copy(data[website]['password'])
+        else:
+            messagebox.showinfo(title=website, message=f"No details for the website {website} exists")
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -84,8 +102,8 @@ label_password = Label(text="Password:")
 label_password.grid(column=0, row=3)
 
 # Entry
-input_website = Entry(width=43)
-input_website.grid(column=1, row=1, columnspan=2)  # Columnspan indicates that takes the space of two columns
+input_website = Entry(width=25)
+input_website.grid(column=1, row=1)
 input_website.focus()  # To indicate where the cursor should start
 
 input_email = Entry(width=43)
@@ -96,7 +114,9 @@ input_password = Entry(width=25)
 input_password.grid(column=1, row=3)
 
 # Buttons
-button_generate = Button(text="Generate Password", command=generate_password)
+button_search = Button(text="Search", command=find_password, width=14)
+button_search.grid(column=2, row=1)
+button_generate = Button(text="Generate Password", command=generate_password, width=14)
 button_generate.grid(column=2, row=3)
 
 button_add = Button(text="Add", width=36, command=save)
